@@ -1,4 +1,6 @@
 Feature: Bookstore
+  @Smoke
+  @Store
 
   Background: The user is in the bookstore section of the page
     Given the user navigates to the website
