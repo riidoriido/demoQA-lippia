@@ -2,6 +2,7 @@ package lippia.web.services;
 
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.driver.DriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -40,6 +41,20 @@ public class Utils extends WebActionManager {
 
         Assert.assertTrue(result);
 
+    }
+
+    public static void hasMoreChilds(String parent, int childAmount) {
+        int elementCount= WebActionManager.getElements(parent).size();
+        Assert.assertTrue(elementCount > childAmount);
+    }
+    public static void hasChildAmount(String parent, int childAmount) {
+        int elementCount= WebActionManager.getElements(parent).size();
+        Assert.assertEquals(elementCount,childAmount);
+    }
+
+    public static void verifyURL(String expectedUrl){
+        String actualUrl = DriverManager.getDriverInstance().getCurrentUrl();
+        Assert.assertEquals(actualUrl,expectedUrl);
     }
 
 }
